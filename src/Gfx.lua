@@ -6,15 +6,20 @@ local _slabInitialized = false
 
 local function ensurePaths()
     if _pathsReady then return end
-    if not (love and love.filesystem) then return end
 
     local path = "kh.src/"
     local files = { "init", "lexer", "parser", "runtime", "stepper" }
     for _, f in ipairs(files) do
         package.preload[f] = function(modname)
-            local fn, err = love.filesystem.load(path .. f .. ".lua")
-            if not fn then return err end
-            return fn(modname)
+            if love and love.filesystem then
+                local fn, err = love.filesystem.load(path .. f .. ".lua")
+                if not fn then return err end
+                return fn(modname)
+            else
+                local fn, err = loadfile(path .. f .. ".lua")
+                if not fn then return err end
+                return fn(modname)
+            end
         end
     end
 

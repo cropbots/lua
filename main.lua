@@ -1,8 +1,18 @@
 -- main.lua — Cropbots entry (title screen → game).
 
 -- Preload bit shim for environments without LuaJIT (like love.js)
-package.preload['bit'] = function() return require("vendor.bit") end
-package.preload['ffi'] = function() return require("vendor.ffi") end
+local has_bit = pcall(require, "bit")
+if not has_bit then
+	package.preload['bit'] = function() return require("vendor.bit") end
+end
+
+local has_ffi = pcall(require, "ffi")
+if not has_ffi then
+	package.preload['ffi'] = function() return require("vendor.ffi") end
+end
+
+-- Pre-register vendor.slab to resolve to the init file directly
+package.preload['vendor.slab'] = function() return require("vendor.slab.init") end
 
 require("src.Gfx") -- package.path for Khoron before UI modules load
 local Gfx = require("src.Gfx")
