@@ -1,0 +1,16 @@
+return {
+    id = "rock_small_90",
+    width = 1,
+    height = 1,
+    background = {},
+    foreground = {},
+    overlay = { { dx = 0, dy = 0, tileId = 90 } },
+    colliders = {},
+    interactors = { { dx = 0, dy = 0, mask = 15 } },
+    on_interact = { "rock:small" },
+    interact_range = 2.0,
+    frequency = 0.003,
+    max_per_map = 600,
+    min_distance = 18,
+    player_buildable = false,
+}

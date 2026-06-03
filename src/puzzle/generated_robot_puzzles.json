@@ -1,0 +1,2002 @@
+[
+  {
+    "id": "ve_keys_001",
+    "difficulty": "VERY_EASY",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "collect_all_keys"
+      },
+      "lines": [
+        "# # # # # #",
+        "# R K1 . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# # # # # #"
+      ]
+    },
+    "starter": "collect()\n"
+  },
+  {
+    "id": "ve_kill_002",
+    "difficulty": "VERY_EASY",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "kill_all_enemies"
+      },
+      "lines": [
+        "# # # # # #",
+        "# R E . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# # # # # #"
+      ]
+    },
+    "starter": "attack()\n"
+  },
+  {
+    "id": "ve_flag_003",
+    "difficulty": "VERY_EASY",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "flag"
+      },
+      "lines": [
+        "# # # # # #",
+        "# R . . F #",
+        "# . . . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# # # # # #"
+      ]
+    },
+    "starter": "repeat 3:\n    move()\nend\nflag()\n"
+  },
+  {
+    "id": "ve_keys_004",
+    "difficulty": "VERY_EASY",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "collect_all_keys"
+      },
+      "lines": [
+        "# # # # # #",
+        "# R K4 . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# # # # # #"
+      ]
+    },
+    "starter": "collect()\n"
+  },
+  {
+    "id": "ve_kill_005",
+    "difficulty": "VERY_EASY",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "kill_all_enemies"
+      },
+      "lines": [
+        "# # # # # #",
+        "# R E . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# # # # # #"
+      ]
+    },
+    "starter": "attack()\n"
+  },
+  {
+    "id": "ve_flag_006",
+    "difficulty": "VERY_EASY",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "flag"
+      },
+      "lines": [
+        "# # # # # #",
+        "# R . . F #",
+        "# . . . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# # # # # #"
+      ]
+    },
+    "starter": "repeat 3:\n    move()\nend\nflag()\n"
+  },
+  {
+    "id": "ve_keys_007",
+    "difficulty": "VERY_EASY",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "collect_all_keys"
+      },
+      "lines": [
+        "# # # # # #",
+        "# R K7 . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# # # # # #"
+      ]
+    },
+    "starter": "collect()\n"
+  },
+  {
+    "id": "ve_kill_008",
+    "difficulty": "VERY_EASY",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "kill_all_enemies"
+      },
+      "lines": [
+        "# # # # # #",
+        "# R E . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# # # # # #"
+      ]
+    },
+    "starter": "attack()\n"
+  },
+  {
+    "id": "ve_flag_009",
+    "difficulty": "VERY_EASY",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "flag"
+      },
+      "lines": [
+        "# # # # # #",
+        "# R . . F #",
+        "# . . . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# # # # # #"
+      ]
+    },
+    "starter": "repeat 3:\n    move()\nend\nflag()\n"
+  },
+  {
+    "id": "ve_keys_010",
+    "difficulty": "VERY_EASY",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "collect_all_keys"
+      },
+      "lines": [
+        "# # # # # #",
+        "# R K2 . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# # # # # #"
+      ]
+    },
+    "starter": "collect()\n"
+  },
+  {
+    "id": "ve_kill_011",
+    "difficulty": "VERY_EASY",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "kill_all_enemies"
+      },
+      "lines": [
+        "# # # # # #",
+        "# R E . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# # # # # #"
+      ]
+    },
+    "starter": "attack()\n"
+  },
+  {
+    "id": "ve_flag_012",
+    "difficulty": "VERY_EASY",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "flag"
+      },
+      "lines": [
+        "# # # # # #",
+        "# R . . F #",
+        "# . . . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# # # # # #"
+      ]
+    },
+    "starter": "repeat 3:\n    move()\nend\nflag()\n"
+  },
+  {
+    "id": "ve_keys_013",
+    "difficulty": "VERY_EASY",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "collect_all_keys"
+      },
+      "lines": [
+        "# # # # # #",
+        "# R K5 . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# # # # # #"
+      ]
+    },
+    "starter": "collect()\n"
+  },
+  {
+    "id": "ve_kill_014",
+    "difficulty": "VERY_EASY",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "kill_all_enemies"
+      },
+      "lines": [
+        "# # # # # #",
+        "# R E . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# # # # # #"
+      ]
+    },
+    "starter": "attack()\n"
+  },
+  {
+    "id": "ve_flag_015",
+    "difficulty": "VERY_EASY",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "flag"
+      },
+      "lines": [
+        "# # # # # #",
+        "# R . . F #",
+        "# . . . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# # # # # #"
+      ]
+    },
+    "starter": "repeat 3:\n    move()\nend\nflag()\n"
+  },
+  {
+    "id": "ve_keys_016",
+    "difficulty": "VERY_EASY",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "collect_all_keys"
+      },
+      "lines": [
+        "# # # # # #",
+        "# R K8 . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# # # # # #"
+      ]
+    },
+    "starter": "collect()\n"
+  },
+  {
+    "id": "ve_kill_017",
+    "difficulty": "VERY_EASY",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "kill_all_enemies"
+      },
+      "lines": [
+        "# # # # # #",
+        "# R E . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# # # # # #"
+      ]
+    },
+    "starter": "attack()\n"
+  },
+  {
+    "id": "ve_flag_018",
+    "difficulty": "VERY_EASY",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "flag"
+      },
+      "lines": [
+        "# # # # # #",
+        "# R . . F #",
+        "# . . . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# # # # # #"
+      ]
+    },
+    "starter": "repeat 3:\n    move()\nend\nflag()\n"
+  },
+  {
+    "id": "ve_keys_019",
+    "difficulty": "VERY_EASY",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "collect_all_keys"
+      },
+      "lines": [
+        "# # # # # #",
+        "# R K3 . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# # # # # #"
+      ]
+    },
+    "starter": "collect()\n"
+  },
+  {
+    "id": "ve_kill_020",
+    "difficulty": "VERY_EASY",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "kill_all_enemies"
+      },
+      "lines": [
+        "# # # # # #",
+        "# R E . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# # # # # #"
+      ]
+    },
+    "starter": "attack()\n"
+  },
+  {
+    "id": "ve_flag_021",
+    "difficulty": "VERY_EASY",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "flag"
+      },
+      "lines": [
+        "# # # # # #",
+        "# R . . F #",
+        "# . . . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# # # # # #"
+      ]
+    },
+    "starter": "repeat 3:\n    move()\nend\nflag()\n"
+  },
+  {
+    "id": "ve_keys_022",
+    "difficulty": "VERY_EASY",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "collect_all_keys"
+      },
+      "lines": [
+        "# # # # # #",
+        "# R K6 . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# # # # # #"
+      ]
+    },
+    "starter": "collect()\n"
+  },
+  {
+    "id": "ve_kill_023",
+    "difficulty": "VERY_EASY",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "kill_all_enemies"
+      },
+      "lines": [
+        "# # # # # #",
+        "# R E . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# # # # # #"
+      ]
+    },
+    "starter": "attack()\n"
+  },
+  {
+    "id": "ve_flag_024",
+    "difficulty": "VERY_EASY",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "flag"
+      },
+      "lines": [
+        "# # # # # #",
+        "# R . . F #",
+        "# . . . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# # # # # #"
+      ]
+    },
+    "starter": "repeat 3:\n    move()\nend\nflag()\n"
+  },
+  {
+    "id": "ve_keys_025",
+    "difficulty": "VERY_EASY",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "collect_all_keys"
+      },
+      "lines": [
+        "# # # # # #",
+        "# R K1 . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# # # # # #"
+      ]
+    },
+    "starter": "collect()\n"
+  },
+  {
+    "id": "ve_kill_026",
+    "difficulty": "VERY_EASY",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "kill_all_enemies"
+      },
+      "lines": [
+        "# # # # # #",
+        "# R E . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# # # # # #"
+      ]
+    },
+    "starter": "attack()\n"
+  },
+  {
+    "id": "ve_flag_027",
+    "difficulty": "VERY_EASY",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "flag"
+      },
+      "lines": [
+        "# # # # # #",
+        "# R . . F #",
+        "# . . . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# # # # # #"
+      ]
+    },
+    "starter": "repeat 3:\n    move()\nend\nflag()\n"
+  },
+  {
+    "id": "ve_keys_028",
+    "difficulty": "VERY_EASY",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "collect_all_keys"
+      },
+      "lines": [
+        "# # # # # #",
+        "# R K4 . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# # # # # #"
+      ]
+    },
+    "starter": "collect()\n"
+  },
+  {
+    "id": "ve_kill_029",
+    "difficulty": "VERY_EASY",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "kill_all_enemies"
+      },
+      "lines": [
+        "# # # # # #",
+        "# R E . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# # # # # #"
+      ]
+    },
+    "starter": "attack()\n"
+  },
+  {
+    "id": "ve_flag_030",
+    "difficulty": "VERY_EASY",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "flag"
+      },
+      "lines": [
+        "# # # # # #",
+        "# R . . F #",
+        "# . . . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# # # # # #"
+      ]
+    },
+    "starter": "repeat 3:\n    move()\nend\nflag()\n"
+  },
+  {
+    "id": "ve_keys_031",
+    "difficulty": "VERY_EASY",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "collect_all_keys"
+      },
+      "lines": [
+        "# # # # # #",
+        "# R K7 . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# # # # # #"
+      ]
+    },
+    "starter": "collect()\n"
+  },
+  {
+    "id": "ve_kill_032",
+    "difficulty": "VERY_EASY",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "kill_all_enemies"
+      },
+      "lines": [
+        "# # # # # #",
+        "# R E . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# # # # # #"
+      ]
+    },
+    "starter": "attack()\n"
+  },
+  {
+    "id": "ve_flag_033",
+    "difficulty": "VERY_EASY",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "flag"
+      },
+      "lines": [
+        "# # # # # #",
+        "# R . . F #",
+        "# . . . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# # # # # #"
+      ]
+    },
+    "starter": "repeat 3:\n    move()\nend\nflag()\n"
+  },
+  {
+    "id": "ve_keys_034",
+    "difficulty": "VERY_EASY",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "collect_all_keys"
+      },
+      "lines": [
+        "# # # # # #",
+        "# R K2 . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# # # # # #"
+      ]
+    },
+    "starter": "collect()\n"
+  },
+  {
+    "id": "ve_kill_035",
+    "difficulty": "VERY_EASY",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "kill_all_enemies"
+      },
+      "lines": [
+        "# # # # # #",
+        "# R E . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# # # # # #"
+      ]
+    },
+    "starter": "attack()\n"
+  },
+  {
+    "id": "ve_flag_036",
+    "difficulty": "VERY_EASY",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "flag"
+      },
+      "lines": [
+        "# # # # # #",
+        "# R . . F #",
+        "# . . . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# # # # # #"
+      ]
+    },
+    "starter": "repeat 3:\n    move()\nend\nflag()\n"
+  },
+  {
+    "id": "ve_keys_037",
+    "difficulty": "VERY_EASY",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "collect_all_keys"
+      },
+      "lines": [
+        "# # # # # #",
+        "# R K5 . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# # # # # #"
+      ]
+    },
+    "starter": "collect()\n"
+  },
+  {
+    "id": "ve_kill_038",
+    "difficulty": "VERY_EASY",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "kill_all_enemies"
+      },
+      "lines": [
+        "# # # # # #",
+        "# R E . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# # # # # #"
+      ]
+    },
+    "starter": "attack()\n"
+  },
+  {
+    "id": "ve_flag_039",
+    "difficulty": "VERY_EASY",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "flag"
+      },
+      "lines": [
+        "# # # # # #",
+        "# R . . F #",
+        "# . . . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# # # # # #"
+      ]
+    },
+    "starter": "repeat 3:\n    move()\nend\nflag()\n"
+  },
+  {
+    "id": "ve_keys_040",
+    "difficulty": "VERY_EASY",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "collect_all_keys"
+      },
+      "lines": [
+        "# # # # # #",
+        "# R K8 . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# # # # # #"
+      ]
+    },
+    "starter": "collect()\n"
+  },
+  {
+    "id": "ve_kill_041",
+    "difficulty": "VERY_EASY",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "kill_all_enemies"
+      },
+      "lines": [
+        "# # # # # #",
+        "# R E . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# # # # # #"
+      ]
+    },
+    "starter": "attack()\n"
+  },
+  {
+    "id": "ve_flag_042",
+    "difficulty": "VERY_EASY",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "flag"
+      },
+      "lines": [
+        "# # # # # #",
+        "# R . . F #",
+        "# . . . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# # # # # #"
+      ]
+    },
+    "starter": "repeat 3:\n    move()\nend\nflag()\n"
+  },
+  {
+    "id": "ve_keys_043",
+    "difficulty": "VERY_EASY",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "collect_all_keys"
+      },
+      "lines": [
+        "# # # # # #",
+        "# R K3 . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# # # # # #"
+      ]
+    },
+    "starter": "collect()\n"
+  },
+  {
+    "id": "ve_kill_044",
+    "difficulty": "VERY_EASY",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "kill_all_enemies"
+      },
+      "lines": [
+        "# # # # # #",
+        "# R E . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# # # # # #"
+      ]
+    },
+    "starter": "attack()\n"
+  },
+  {
+    "id": "ve_flag_045",
+    "difficulty": "VERY_EASY",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "flag"
+      },
+      "lines": [
+        "# # # # # #",
+        "# R . . F #",
+        "# . . . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# # # # # #"
+      ]
+    },
+    "starter": "repeat 3:\n    move()\nend\nflag()\n"
+  },
+  {
+    "id": "ve_keys_046",
+    "difficulty": "VERY_EASY",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "collect_all_keys"
+      },
+      "lines": [
+        "# # # # # #",
+        "# R K6 . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# # # # # #"
+      ]
+    },
+    "starter": "collect()\n"
+  },
+  {
+    "id": "ve_kill_047",
+    "difficulty": "VERY_EASY",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "kill_all_enemies"
+      },
+      "lines": [
+        "# # # # # #",
+        "# R E . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# # # # # #"
+      ]
+    },
+    "starter": "attack()\n"
+  },
+  {
+    "id": "ve_flag_048",
+    "difficulty": "VERY_EASY",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "flag"
+      },
+      "lines": [
+        "# # # # # #",
+        "# R . . F #",
+        "# . . . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# # # # # #"
+      ]
+    },
+    "starter": "repeat 3:\n    move()\nend\nflag()\n"
+  },
+  {
+    "id": "ve_keys_049",
+    "difficulty": "VERY_EASY",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "collect_all_keys"
+      },
+      "lines": [
+        "# # # # # #",
+        "# R K1 . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# # # # # #"
+      ]
+    },
+    "starter": "collect()\n"
+  },
+  {
+    "id": "ve_kill_050",
+    "difficulty": "VERY_EASY",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "kill_all_enemies"
+      },
+      "lines": [
+        "# # # # # #",
+        "# R E . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# . . . . #",
+        "# # # # # #"
+      ]
+    },
+    "starter": "attack()\n"
+  },
+  {
+    "id": "mh_push_001",
+    "difficulty": "MEDIUM_HARD",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "flag"
+      },
+      "lines": [
+        "# # # # # # # #",
+        "# R M . . F . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# # # # # # # #"
+      ]
+    },
+    "starter": "move()\nmove()\nmove()\nflag()\n"
+  },
+  {
+    "id": "mh_kill_002",
+    "difficulty": "MEDIUM_HARD",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "kill_all_enemies"
+      },
+      "lines": [
+        "# # # # # # # #",
+        "# R E E . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# # # # # # # #"
+      ]
+    },
+    "starter": "attack()\nattack()\n"
+  },
+  {
+    "id": "mh_keys_003",
+    "difficulty": "MEDIUM_HARD",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "collect_all_keys"
+      },
+      "lines": [
+        "# # # # # # # #",
+        "# R K3 . . . . #",
+        "# K4 . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# # # # # # # #"
+      ]
+    },
+    "starter": "collect()\nright_turn()\nmove()\ncollect()\n"
+  },
+  {
+    "id": "mh_gate_004",
+    "difficulty": "MEDIUM_HARD",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "flag"
+      },
+      "lines": [
+        "# # # # # # # #",
+        "# R K4 . L4 . F #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# # # # # # # #"
+      ]
+    },
+    "starter": "collect()\nrepeat 2:\n    move()\nend\nunlock()\nrepeat 2:\n    move()\nend\nflag()\n"
+  },
+  {
+    "id": "mh_push_005",
+    "difficulty": "MEDIUM_HARD",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "flag"
+      },
+      "lines": [
+        "# # # # # # # #",
+        "# R M . . F . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# # # # # # # #"
+      ]
+    },
+    "starter": "move()\nmove()\nmove()\nflag()\n"
+  },
+  {
+    "id": "mh_kill_006",
+    "difficulty": "MEDIUM_HARD",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "kill_all_enemies"
+      },
+      "lines": [
+        "# # # # # # # #",
+        "# R E E . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# # # # # # # #"
+      ]
+    },
+    "starter": "attack()\nattack()\n"
+  },
+  {
+    "id": "mh_keys_007",
+    "difficulty": "MEDIUM_HARD",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "collect_all_keys"
+      },
+      "lines": [
+        "# # # # # # # #",
+        "# R K7 . . . . #",
+        "# K8 . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# # # # # # # #"
+      ]
+    },
+    "starter": "collect()\nright_turn()\nmove()\ncollect()\n"
+  },
+  {
+    "id": "mh_gate_008",
+    "difficulty": "MEDIUM_HARD",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "flag"
+      },
+      "lines": [
+        "# # # # # # # #",
+        "# R K8 . L8 . F #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# # # # # # # #"
+      ]
+    },
+    "starter": "collect()\nrepeat 2:\n    move()\nend\nunlock()\nrepeat 2:\n    move()\nend\nflag()\n"
+  },
+  {
+    "id": "mh_push_009",
+    "difficulty": "MEDIUM_HARD",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "flag"
+      },
+      "lines": [
+        "# # # # # # # #",
+        "# R M . . F . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# # # # # # # #"
+      ]
+    },
+    "starter": "move()\nmove()\nmove()\nflag()\n"
+  },
+  {
+    "id": "mh_kill_010",
+    "difficulty": "MEDIUM_HARD",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "kill_all_enemies"
+      },
+      "lines": [
+        "# # # # # # # #",
+        "# R E E . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# # # # # # # #"
+      ]
+    },
+    "starter": "attack()\nattack()\n"
+  },
+  {
+    "id": "mh_keys_011",
+    "difficulty": "MEDIUM_HARD",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "collect_all_keys"
+      },
+      "lines": [
+        "# # # # # # # #",
+        "# R K3 . . . . #",
+        "# K4 . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# # # # # # # #"
+      ]
+    },
+    "starter": "collect()\nright_turn()\nmove()\ncollect()\n"
+  },
+  {
+    "id": "mh_gate_012",
+    "difficulty": "MEDIUM_HARD",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "flag"
+      },
+      "lines": [
+        "# # # # # # # #",
+        "# R K4 . L4 . F #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# # # # # # # #"
+      ]
+    },
+    "starter": "collect()\nrepeat 2:\n    move()\nend\nunlock()\nrepeat 2:\n    move()\nend\nflag()\n"
+  },
+  {
+    "id": "mh_push_013",
+    "difficulty": "MEDIUM_HARD",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "flag"
+      },
+      "lines": [
+        "# # # # # # # #",
+        "# R M . . F . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# # # # # # # #"
+      ]
+    },
+    "starter": "move()\nmove()\nmove()\nflag()\n"
+  },
+  {
+    "id": "mh_kill_014",
+    "difficulty": "MEDIUM_HARD",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "kill_all_enemies"
+      },
+      "lines": [
+        "# # # # # # # #",
+        "# R E E . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# # # # # # # #"
+      ]
+    },
+    "starter": "attack()\nattack()\n"
+  },
+  {
+    "id": "mh_keys_015",
+    "difficulty": "MEDIUM_HARD",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "collect_all_keys"
+      },
+      "lines": [
+        "# # # # # # # #",
+        "# R K7 . . . . #",
+        "# K8 . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# # # # # # # #"
+      ]
+    },
+    "starter": "collect()\nright_turn()\nmove()\ncollect()\n"
+  },
+  {
+    "id": "mh_gate_016",
+    "difficulty": "MEDIUM_HARD",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "flag"
+      },
+      "lines": [
+        "# # # # # # # #",
+        "# R K8 . L8 . F #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# # # # # # # #"
+      ]
+    },
+    "starter": "collect()\nrepeat 2:\n    move()\nend\nunlock()\nrepeat 2:\n    move()\nend\nflag()\n"
+  },
+  {
+    "id": "mh_push_017",
+    "difficulty": "MEDIUM_HARD",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "flag"
+      },
+      "lines": [
+        "# # # # # # # #",
+        "# R M . . F . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# # # # # # # #"
+      ]
+    },
+    "starter": "move()\nmove()\nmove()\nflag()\n"
+  },
+  {
+    "id": "mh_kill_018",
+    "difficulty": "MEDIUM_HARD",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "kill_all_enemies"
+      },
+      "lines": [
+        "# # # # # # # #",
+        "# R E E . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# # # # # # # #"
+      ]
+    },
+    "starter": "attack()\nattack()\n"
+  },
+  {
+    "id": "mh_keys_019",
+    "difficulty": "MEDIUM_HARD",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "collect_all_keys"
+      },
+      "lines": [
+        "# # # # # # # #",
+        "# R K3 . . . . #",
+        "# K4 . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# # # # # # # #"
+      ]
+    },
+    "starter": "collect()\nright_turn()\nmove()\ncollect()\n"
+  },
+  {
+    "id": "mh_gate_020",
+    "difficulty": "MEDIUM_HARD",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "flag"
+      },
+      "lines": [
+        "# # # # # # # #",
+        "# R K4 . L4 . F #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# # # # # # # #"
+      ]
+    },
+    "starter": "collect()\nrepeat 2:\n    move()\nend\nunlock()\nrepeat 2:\n    move()\nend\nflag()\n"
+  },
+  {
+    "id": "mh_push_021",
+    "difficulty": "MEDIUM_HARD",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "flag"
+      },
+      "lines": [
+        "# # # # # # # #",
+        "# R M . . F . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# # # # # # # #"
+      ]
+    },
+    "starter": "move()\nmove()\nmove()\nflag()\n"
+  },
+  {
+    "id": "mh_kill_022",
+    "difficulty": "MEDIUM_HARD",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "kill_all_enemies"
+      },
+      "lines": [
+        "# # # # # # # #",
+        "# R E E . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# # # # # # # #"
+      ]
+    },
+    "starter": "attack()\nattack()\n"
+  },
+  {
+    "id": "mh_keys_023",
+    "difficulty": "MEDIUM_HARD",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "collect_all_keys"
+      },
+      "lines": [
+        "# # # # # # # #",
+        "# R K7 . . . . #",
+        "# K8 . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# # # # # # # #"
+      ]
+    },
+    "starter": "collect()\nright_turn()\nmove()\ncollect()\n"
+  },
+  {
+    "id": "mh_gate_024",
+    "difficulty": "MEDIUM_HARD",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "flag"
+      },
+      "lines": [
+        "# # # # # # # #",
+        "# R K8 . L8 . F #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# # # # # # # #"
+      ]
+    },
+    "starter": "collect()\nrepeat 2:\n    move()\nend\nunlock()\nrepeat 2:\n    move()\nend\nflag()\n"
+  },
+  {
+    "id": "mh_push_025",
+    "difficulty": "MEDIUM_HARD",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "flag"
+      },
+      "lines": [
+        "# # # # # # # #",
+        "# R M . . F . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# # # # # # # #"
+      ]
+    },
+    "starter": "move()\nmove()\nmove()\nflag()\n"
+  },
+  {
+    "id": "mh_kill_026",
+    "difficulty": "MEDIUM_HARD",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "kill_all_enemies"
+      },
+      "lines": [
+        "# # # # # # # #",
+        "# R E E . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# # # # # # # #"
+      ]
+    },
+    "starter": "attack()\nattack()\n"
+  },
+  {
+    "id": "mh_keys_027",
+    "difficulty": "MEDIUM_HARD",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "collect_all_keys"
+      },
+      "lines": [
+        "# # # # # # # #",
+        "# R K3 . . . . #",
+        "# K4 . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# # # # # # # #"
+      ]
+    },
+    "starter": "collect()\nright_turn()\nmove()\ncollect()\n"
+  },
+  {
+    "id": "mh_gate_028",
+    "difficulty": "MEDIUM_HARD",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "flag"
+      },
+      "lines": [
+        "# # # # # # # #",
+        "# R K4 . L4 . F #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# # # # # # # #"
+      ]
+    },
+    "starter": "collect()\nrepeat 2:\n    move()\nend\nunlock()\nrepeat 2:\n    move()\nend\nflag()\n"
+  },
+  {
+    "id": "mh_push_029",
+    "difficulty": "MEDIUM_HARD",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "flag"
+      },
+      "lines": [
+        "# # # # # # # #",
+        "# R M . . F . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# # # # # # # #"
+      ]
+    },
+    "starter": "move()\nmove()\nmove()\nflag()\n"
+  },
+  {
+    "id": "mh_kill_030",
+    "difficulty": "MEDIUM_HARD",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "kill_all_enemies"
+      },
+      "lines": [
+        "# # # # # # # #",
+        "# R E E . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# # # # # # # #"
+      ]
+    },
+    "starter": "attack()\nattack()\n"
+  },
+  {
+    "id": "mh_keys_031",
+    "difficulty": "MEDIUM_HARD",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "collect_all_keys"
+      },
+      "lines": [
+        "# # # # # # # #",
+        "# R K7 . . . . #",
+        "# K8 . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# # # # # # # #"
+      ]
+    },
+    "starter": "collect()\nright_turn()\nmove()\ncollect()\n"
+  },
+  {
+    "id": "mh_gate_032",
+    "difficulty": "MEDIUM_HARD",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "flag"
+      },
+      "lines": [
+        "# # # # # # # #",
+        "# R K8 . L8 . F #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# # # # # # # #"
+      ]
+    },
+    "starter": "collect()\nrepeat 2:\n    move()\nend\nunlock()\nrepeat 2:\n    move()\nend\nflag()\n"
+  },
+  {
+    "id": "mh_push_033",
+    "difficulty": "MEDIUM_HARD",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "flag"
+      },
+      "lines": [
+        "# # # # # # # #",
+        "# R M . . F . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# # # # # # # #"
+      ]
+    },
+    "starter": "move()\nmove()\nmove()\nflag()\n"
+  },
+  {
+    "id": "mh_kill_034",
+    "difficulty": "MEDIUM_HARD",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "kill_all_enemies"
+      },
+      "lines": [
+        "# # # # # # # #",
+        "# R E E . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# # # # # # # #"
+      ]
+    },
+    "starter": "attack()\nattack()\n"
+  },
+  {
+    "id": "mh_keys_035",
+    "difficulty": "MEDIUM_HARD",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "collect_all_keys"
+      },
+      "lines": [
+        "# # # # # # # #",
+        "# R K3 . . . . #",
+        "# K4 . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# # # # # # # #"
+      ]
+    },
+    "starter": "collect()\nright_turn()\nmove()\ncollect()\n"
+  },
+  {
+    "id": "mh_gate_036",
+    "difficulty": "MEDIUM_HARD",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "flag"
+      },
+      "lines": [
+        "# # # # # # # #",
+        "# R K4 . L4 . F #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# # # # # # # #"
+      ]
+    },
+    "starter": "collect()\nrepeat 2:\n    move()\nend\nunlock()\nrepeat 2:\n    move()\nend\nflag()\n"
+  },
+  {
+    "id": "mh_push_037",
+    "difficulty": "MEDIUM_HARD",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "flag"
+      },
+      "lines": [
+        "# # # # # # # #",
+        "# R M . . F . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# # # # # # # #"
+      ]
+    },
+    "starter": "move()\nmove()\nmove()\nflag()\n"
+  },
+  {
+    "id": "mh_kill_038",
+    "difficulty": "MEDIUM_HARD",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "kill_all_enemies"
+      },
+      "lines": [
+        "# # # # # # # #",
+        "# R E E . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# # # # # # # #"
+      ]
+    },
+    "starter": "attack()\nattack()\n"
+  },
+  {
+    "id": "mh_keys_039",
+    "difficulty": "MEDIUM_HARD",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "collect_all_keys"
+      },
+      "lines": [
+        "# # # # # # # #",
+        "# R K7 . . . . #",
+        "# K8 . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# # # # # # # #"
+      ]
+    },
+    "starter": "collect()\nright_turn()\nmove()\ncollect()\n"
+  },
+  {
+    "id": "mh_gate_040",
+    "difficulty": "MEDIUM_HARD",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "flag"
+      },
+      "lines": [
+        "# # # # # # # #",
+        "# R K8 . L8 . F #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# # # # # # # #"
+      ]
+    },
+    "starter": "collect()\nrepeat 2:\n    move()\nend\nunlock()\nrepeat 2:\n    move()\nend\nflag()\n"
+  },
+  {
+    "id": "mh_push_041",
+    "difficulty": "MEDIUM_HARD",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "flag"
+      },
+      "lines": [
+        "# # # # # # # #",
+        "# R M . . F . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# # # # # # # #"
+      ]
+    },
+    "starter": "move()\nmove()\nmove()\nflag()\n"
+  },
+  {
+    "id": "mh_kill_042",
+    "difficulty": "MEDIUM_HARD",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "kill_all_enemies"
+      },
+      "lines": [
+        "# # # # # # # #",
+        "# R E E . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# # # # # # # #"
+      ]
+    },
+    "starter": "attack()\nattack()\n"
+  },
+  {
+    "id": "mh_keys_043",
+    "difficulty": "MEDIUM_HARD",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "collect_all_keys"
+      },
+      "lines": [
+        "# # # # # # # #",
+        "# R K3 . . . . #",
+        "# K4 . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# # # # # # # #"
+      ]
+    },
+    "starter": "collect()\nright_turn()\nmove()\ncollect()\n"
+  },
+  {
+    "id": "mh_gate_044",
+    "difficulty": "MEDIUM_HARD",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "flag"
+      },
+      "lines": [
+        "# # # # # # # #",
+        "# R K4 . L4 . F #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# # # # # # # #"
+      ]
+    },
+    "starter": "collect()\nrepeat 2:\n    move()\nend\nunlock()\nrepeat 2:\n    move()\nend\nflag()\n"
+  },
+  {
+    "id": "mh_push_045",
+    "difficulty": "MEDIUM_HARD",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "flag"
+      },
+      "lines": [
+        "# # # # # # # #",
+        "# R M . . F . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# # # # # # # #"
+      ]
+    },
+    "starter": "move()\nmove()\nmove()\nflag()\n"
+  },
+  {
+    "id": "mh_kill_046",
+    "difficulty": "MEDIUM_HARD",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "kill_all_enemies"
+      },
+      "lines": [
+        "# # # # # # # #",
+        "# R E E . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# # # # # # # #"
+      ]
+    },
+    "starter": "attack()\nattack()\n"
+  },
+  {
+    "id": "mh_keys_047",
+    "difficulty": "MEDIUM_HARD",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "collect_all_keys"
+      },
+      "lines": [
+        "# # # # # # # #",
+        "# R K7 . . . . #",
+        "# K8 . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# # # # # # # #"
+      ]
+    },
+    "starter": "collect()\nright_turn()\nmove()\ncollect()\n"
+  },
+  {
+    "id": "mh_gate_048",
+    "difficulty": "MEDIUM_HARD",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "flag"
+      },
+      "lines": [
+        "# # # # # # # #",
+        "# R K8 . L8 . F #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# # # # # # # #"
+      ]
+    },
+    "starter": "collect()\nrepeat 2:\n    move()\nend\nunlock()\nrepeat 2:\n    move()\nend\nflag()\n"
+  },
+  {
+    "id": "mh_push_049",
+    "difficulty": "MEDIUM_HARD",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "flag"
+      },
+      "lines": [
+        "# # # # # # # #",
+        "# R M . . F . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# # # # # # # #"
+      ]
+    },
+    "starter": "move()\nmove()\nmove()\nflag()\n"
+  },
+  {
+    "id": "mh_kill_050",
+    "difficulty": "MEDIUM_HARD",
+    "robot": {
+      "dir": "right",
+      "objective": {
+        "kind": "kill_all_enemies"
+      },
+      "lines": [
+        "# # # # # # # #",
+        "# R E E . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# . . . . . . #",
+        "# # # # # # # #"
+      ]
+    },
+    "starter": "attack()\nattack()\n"
+  }
+]

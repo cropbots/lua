@@ -1,0 +1,18 @@
+return {
+    id = "bush_plains",
+    width = 1,
+    height = 1,
+    background = {},
+    foreground = {},
+    overlay = { { dx = 0, dy = 0, tileId = 56 } },
+    colliders = { { dx = 0, dy = 0, mask = 12 } },
+    interactors = {},
+    on_interact = {},
+    interact_range = 0,
+    frequency = 0.025,
+    max_per_map = 800,
+    min_distance = 24,
+    player_buildable = false,
+    build_cog_cost = 0,
+    build_materials = {},
+}

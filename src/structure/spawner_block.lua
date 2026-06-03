@@ -1,0 +1,21 @@
+return {
+    id = "spawner_block",
+    width = 1,
+    height = 1,
+    background = {},
+    foreground = {},
+    overlay = { { dx = 0, dy = 0, tileId = 59 } },
+    colliders = { { dx = 0, dy = 0, mask = 15 } },
+    interactors = {},
+    on_interact = {},
+    interact_range = 0,
+    frequency = 1.0,
+    max_per_map = 999,
+    min_distance = 0,
+    player_buildable = false,
+    spawner = {
+        interval = 1.0,
+        total = 16,
+        entities = { "virat", "virabird" },
+    },
+}

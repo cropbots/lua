@@ -1,0 +1,16 @@
+return {
+    id = "warp_expedition",
+    width = 1,
+    height = 1,
+    background = {},
+    foreground = {},
+    overlay = { { dx = 0, dy = 0, tileId = 215 } },
+    colliders = { { dx = 0, dy = 0, mask = 15 } },
+    interactors = { { dx = 0, dy = 0 } },
+    on_interact = { "warp:expedition" },
+    interact_range = 2.5,
+    frequency = 0,
+    max_per_map = 0,
+    min_distance = 0,
+    player_buildable = false,
+}

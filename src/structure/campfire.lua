@@ -1,0 +1,18 @@
+return {
+    id = "campfire",
+    width = 1,
+    height = 1,
+    background = {},
+    foreground = { { dx = 0, dy = 0, tileId = 76 } },
+    overlay = {},
+    colliders = {},
+    interactors = {},
+    on_interact = {},
+    interact_range = 0,
+    frequency = 0,
+    max_per_map = 0,
+    min_distance = 0,
+    player_buildable = true,
+    build_cog_cost = 5,
+    build_materials = {},
+}

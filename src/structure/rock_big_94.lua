@@ -1,0 +1,16 @@
+return {
+    id = "rock_big_94",
+    width = 1,
+    height = 1,
+    background = {},
+    foreground = {},
+    overlay = { { dx = 0, dy = 0, tileId = 94 } },
+    colliders = { { dx = 0, dy = 0, mask = 15 } },
+    interactors = { { dx = 0, dy = 0, mask = 15 } },
+    on_interact = { "rock:big" },
+    interact_range = 2.0,
+    frequency = 0.001,
+    max_per_map = 200,
+    min_distance = 22,
+    player_buildable = false,
+}

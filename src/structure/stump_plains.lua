@@ -1,0 +1,16 @@
+return {
+    id = "stump_plains",
+    width = 1,
+    height = 1,
+    background = {},
+    foreground = {},
+    overlay = { { dx = 0, dy = 0, tileId = 72 } },
+    colliders = { { dx = 0, dy = 0, mask = 15 } },
+    interactors = { { dx = 0, dy = 0, mask = 15 } },
+    on_interact = { "chop:stump" },
+    interact_range = 2.2,
+    frequency = 0.003,
+    max_per_map = 120,
+    min_distance = 14,
+    player_buildable = false,
+}
