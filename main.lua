@@ -11,12 +11,8 @@ if not has_ffi then
 	package.preload['ffi'] = function() return require("vendor.ffi") end
 end
 
--- Pre-register vendor.slab to resolve to the init file directly
-package.preload['vendor.slab'] = function() return require("vendor.slab.init") end
-
 require("src.Gfx") -- package.path for Khoron before UI modules load
 local Gfx = require("src.Gfx")
-local Slab = require("vendor.slab")
 local TitleScreen = require("src.TitleScreen")
 local SceneManager = require("src.SceneManager")
 local CustomUI = require("src.ui.CustomUI")
@@ -35,7 +31,6 @@ end
 
 function love.update(dt)
 	CustomUI.clearEvents(dt)
-	Slab.Update(dt)
 
 	if appState == "title" then
 		titleScreen:update(dt)
@@ -58,7 +53,6 @@ function love.draw()
 	end
 	scene:draw()
 	CustomUI.draw()
-	Slab.Draw()
 	scene:drawPostUI()
 end
 

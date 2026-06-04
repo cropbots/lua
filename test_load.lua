@@ -1,7 +1,5 @@
 require("src.Gfx")
 print("✓ Gfx loaded")
-local Slab = require("vendor.slab")
-print("✓ Slab loaded")
 local SceneManager = require("src.SceneManager")
 print("✓ SceneManager loaded")
 print("Done!")

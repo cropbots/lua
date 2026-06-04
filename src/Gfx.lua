@@ -2,7 +2,6 @@
 
 local Gfx = {}
 local _pathsReady = false
-local _slabInitialized = false
 
 local function ensurePaths()
     if _pathsReady then return end
@@ -32,17 +31,6 @@ function Gfx.init()
     ensurePaths()
     if love.graphics and love.graphics.setDefaultFilter then
         love.graphics.setDefaultFilter("nearest", "nearest")
-    end
-
-    if not _slabInitialized then
-        local Slab = require("vendor.slab")
-        Slab.Initialize({ "NoMessages" })
-        -- Some package path layouts fail to auto-load bundled styles on boot.
-        pcall(function()
-            Slab.LoadStyle("vendor/slab/Internal/Resources/Styles/Dark.style", true, true)
-            Slab.SetStyle("Dark")
-        end)
-        _slabInitialized = true
     end
 end
 

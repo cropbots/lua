@@ -1,0 +1,39 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y zip npm lua5.1 love
+          sudo npm install -g love.js
+
+      - name: Create .love file
+        run: zip -r -9 lua.love . -x ".git/*" ".github/*"
+
+      - name: Convert to love.js
+        run: |
+          love.js lua.love dist -t cropbots
+
+      - name: Prepare build
+        run: |
+          cp server.js dist/
+          cd dist
+          npm init -y
+          npm i express
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
