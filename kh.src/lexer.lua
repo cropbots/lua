@@ -63,8 +63,10 @@ function Lexer.tokenize(source)
             elseif peek(2) == "++" then add("plus_plus", "++"); adv(2)
             else add("plus", "+"); adv(1) end
         elseif c == "-" then
-            if peek(2) == "-=" then add("minus_eq", "-="); adv(2)
-            elseif peek(2) == "--" then add("minus_minus", "--"); adv(2)
+            if peek(2) == "--" then
+                -- Comment: consume until newline
+                while i <= n and source:sub(i, i) ~= "\n" do adv(1) end
+            elseif peek(2) == "-=" then add("minus_eq", "-="); adv(2)
             else add("minus", "-"); adv(1) end
         elseif c == "*" then
             if peek(2) == "*=" then add("star_eq", "*="); adv(2)

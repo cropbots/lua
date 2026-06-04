@@ -56,7 +56,8 @@ function Runtime:evalExpr(expr)
         for i, a in ipairs(expr.args) do
             args[i] = self:evalExpr(a)
         end
-        return fn(self, unpackCompat(args))
+        local result = fn(self, unpackCompat(args))
+        return result
     end
     return nil
 end
@@ -84,8 +85,6 @@ function Runtime:evalStmt(stmt)
         local cur = self:get(stmt.name) or 0
         if stmt.op == "inc" then
             self:define(stmt.name, cur + 1)
-        else
-            self:define(stmt.name, cur - 1)
         end
     elseif stmt.tag == "expr" then
         self:evalExpr(stmt.expr)

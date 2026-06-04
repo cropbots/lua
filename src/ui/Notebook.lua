@@ -89,14 +89,14 @@ function Notebook:setRobotPuzzle(def)
     })
     local p = self.robotPuzzle
     self:setRobotHooks({
-        move = function() p:move() end,
-        right_turn = function() p:right_turn() end,
-        left_turn = function() p:left_turn() end,
-        half_turn = function() p:half_turn() end,
-        collect = function() p:collect() end,
-        unlock = function() p:unlock() end,
-        attack = function() p:attack() end,
-        flag = function() p:flag() end,
+        move = function() return p:move() end,
+        right_turn = function() return p:right_turn() end,
+        left_turn = function() return p:left_turn() end,
+        half_turn = function() return p:half_turn() end,
+        collect = function() return p:collect() end,
+        unlock = function() return p:unlock() end,
+        attack = function() return p:attack() end,
+        flag = function() return p:flag() end,
     })
     self.stepper = nil
     self.consoleLog = ""

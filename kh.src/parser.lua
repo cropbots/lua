@@ -188,12 +188,6 @@ function Parser.parse(tokens)
             return { tag = "incdec", op = "inc", name = name, line = lineNo }
         end
 
-        if match("ident") and nxt() and nxt().kind == "minus_minus" then
-            local name = eat("ident").value
-            pos = pos + 1
-            return { tag = "incdec", op = "dec", name = name, line = lineNo }
-        end
-
         if match("ident") and nxt() and (nxt().kind == "newline" or nxt().kind == "eof" or (nxt().kind == "keyword" and nxt().value == "end")) then
             local name = eat("ident").value
             return { tag = "expr", expr = { tag = "call", name = name, args = {} }, line = lineNo }

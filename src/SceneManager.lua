@@ -167,30 +167,38 @@ function SceneManager:load()
                 self.player:setPosition(px - step, py)
             end
             self.notebook:log("[game] move")
+            return true
         end,
         left_turn = function()
             self.notebookRobotDir = (self.notebookRobotDir + 3) % 4
             self.notebook:log("[game] left_turn")
+            return true
         end,
         right_turn = function()
             self.notebookRobotDir = (self.notebookRobotDir + 1) % 4
             self.notebook:log("[game] right_turn")
+            return true
         end,
         half_turn = function()
             self.notebookRobotDir = (self.notebookRobotDir + 2) % 4
             self.notebook:log("[game] half_turn")
+            return true
         end,
         collect = function()
             self.notebook:log("[game] collect")
+            return true
         end,
         unlock = function()
             self.notebook:log("[game] unlock")
+            return true
         end,
         attack = function()
             self.notebook:log("[game] attack")
+            return true
         end,
         flag = function()
             self.notebook:log("[game] flag")
+            return true
         end,
     })
     self.notebook:setRobotViz(function()
