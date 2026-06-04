@@ -36,6 +36,11 @@ jobs:
           npm init -y
           npm i express
 
+      - name: Add Service Worker
+        run: |
+          cp coi-serviceworker.js dist/
+          sed -i 's/<head>/<head><script src="coi-serviceworker.js"><\/script>/' dist/index.html
+
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v3
         with:
