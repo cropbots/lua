@@ -23,6 +23,8 @@ function Inventory.new()
         crafting = nil,
         craftRects = {},
         craftHover = nil,
+        craftScrollY = 0,
+        craftPanelRect = nil,
         icons = ItemIcons.new(),
     }, Inventory)
 end
@@ -194,6 +196,22 @@ function Inventory:handlePointer(mx, my, pressed)
     return false
 end
 
+function Inventory:handleWheel(mx, my, wheelY)
+    if not self.wheelOpen then return false end
+    if not self.craftPanelRect then return false end
+    local r = self.craftPanelRect
+    if mx < r.x or mx > r.x + r.w or my < r.y or my > r.y + r.h then
+        return false
+    end
+    local rows = self.crafting and self.crafting.list and self.crafting:list() or {}
+    local ICON = 42
+    local GAP = 8
+    local contentH = #rows * (ICON + GAP) + 12
+    local maxScroll = math.max(0, contentH - r.h)
+    self.craftScrollY = math.max(0, math.min(maxScroll, (self.craftScrollY or 0) - wheelY * 24))
+    return true
+end
+
 function Inventory:craftingItemAt(mx, my)
     for _, row in ipairs(self.craftRects) do
         local r = row.rect
@@ -351,8 +369,11 @@ function Inventory:drawCraftingPanel(x, y, w, h)
     local cols = 1  -- Always 1 item wide
     local panelW = cols * ICON + math.max(0, cols - 1) * GAP + 12
     local rows = self.crafting and self.crafting.list and self.crafting:list() or {}
-    local rowCount = math.ceil(math.min(#rows, 24) / cols)
-    local panelH = math.min(h, rowCount * (ICON + GAP) + 12)
+    local contentH = #rows * (ICON + GAP) + 12
+    local panelH = math.min(h, math.max(ICON + 12, contentH))
+    local maxScroll = math.max(0, contentH - panelH)
+    self.craftScrollY = math.max(0, math.min(maxScroll, self.craftScrollY or 0))
+    self.craftPanelRect = { x = x, y = y, w = panelW, h = panelH }
 
     love.graphics.setColor(0, 0, 0, 0.6)
     love.graphics.rectangle("fill", x, y, panelW, panelH, 6, 6)
@@ -363,14 +384,16 @@ function Inventory:drawCraftingPanel(x, y, w, h)
         return
     end
 
+    love.graphics.push("all")
+    love.graphics.intersectScissor(x + 1, y + 1, panelW - 2, panelH - 2)
     local mx, my = love.mouse.getPosition()
-    for i = 1, math.min(#rows, 24) do
+    for i = 1, #rows do
         local row = rows[i]
         local col = (i - 1) % cols
         local rowIdx = math.floor((i - 1) / cols)
         local rect = {
             x = x + 6 + col * (ICON + GAP),
-            y = y + 6 + rowIdx * (ICON + GAP),
+            y = y + 6 + rowIdx * (ICON + GAP) - self.craftScrollY,
             w = ICON,
             h = ICON,
         }
@@ -401,6 +424,14 @@ function Inventory:drawCraftingPanel(x, y, w, h)
     end
     if self.craftHover then
         self:drawCraftTooltip(self.craftHover, x - 170, y + 30)
+    end
+    love.graphics.pop()
+
+    if maxScroll > 0 then
+        local sbH = math.max(16, (panelH / contentH) * panelH)
+        local sbY = y + (self.craftScrollY / maxScroll) * (panelH - sbH)
+        love.graphics.setColor(0.2, 0.2, 0.22, 0.75)
+        love.graphics.rectangle("fill", x + panelW - 6, sbY, 4, sbH, 2, 2)
     end
     love.graphics.setColor(1, 1, 1, 1)
 end

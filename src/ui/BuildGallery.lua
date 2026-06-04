@@ -1,6 +1,4 @@
---- SLAB build gallery — scrollable cards for player-buildable structures.
-
-local Slab = require("vendor.slab")
+local CustomUI = require("src.ui.CustomUI")
 
 local BuildGallery = {}
 BuildGallery.__index = BuildGallery
@@ -41,6 +39,37 @@ function BuildGallery:drawPreview(def, w, h)
         return
     end
 
+    local function drawEntries(entries)
+        if not entries then return end
+        for _, e in ipairs(entries) do
+            if e and e.tileId and e.tileId ~= 0 then
+                local quad = self.tileset:getQuad(e.tileId)
+                if quad then
+                    local rect = self.tileset:getRect(e.tileId)
+                    local iw, ih = rect.w, rect.h
+                    local scale = math.min(w / iw, h / ih)
+                    love.graphics.draw(
+                        self.tileset:getImage(),
+                        quad,
+                        (w - iw * scale) * 0.5 + (e.dx or 0) * scale * iw,
+                        (h - ih * scale) * 0.5 + (e.dy or 0) * scale * ih,
+                        0, scale, scale
+                    )
+                end
+            end
+        end
+    end
+
+    drawEntries(def.background)
+    drawEntries(def.foreground)
+    drawEntries(def.overlay)
+
+    love.graphics.setCanvas()
+    love.graphics.pop()
+end
+
+function BuildGallery:getStructureTileInfo(def)
+    if not def or not self.tileset then return nil, nil end
     local tileId
     for _, layer in ipairs({ 'overlay', 'foreground', 'background' }) do
         local entries = def[layer]
@@ -54,25 +83,11 @@ function BuildGallery:drawPreview(def, w, h)
         end
         if tileId then break end
     end
-
     if tileId then
         local quad = self.tileset:getQuad(tileId)
-        if quad then
-            local rect = self.tileset:getRect(tileId)
-            local iw, ih = rect.w, rect.h
-            local scale = math.min(w / iw, h / ih)
-            love.graphics.draw(
-                self.tileset:getImage(),
-                quad,
-                (w - iw * scale) * 0.5,
-                (h - ih * scale) * 0.5,
-                0, scale, scale
-            )
-        end
+        return self.tileset:getImage(), quad
     end
-
-    love.graphics.setCanvas()
-    love.graphics.pop()
+    return nil, nil
 end
 
 function BuildGallery:rebuild()
@@ -93,12 +108,11 @@ end
 function BuildGallery:show()
     self:rebuild()
     self.open = true
-    Slab.OpenDialog("BuildGallery")
 end
 
 function BuildGallery:hide()
     self.open = false
-    Slab.CloseDialog()
+    CustomUI.focusedWidgetId = nil
 end
 
 function BuildGallery:isOpen()
@@ -115,57 +129,81 @@ function BuildGallery:update(dt)
     local windowWidth = math.min(720, love.graphics.getWidth() - 40)
     local windowHeight = math.min(480, love.graphics.getHeight() - 40)
 
-    if Slab.BeginDialog("BuildGallery", { Title = "Build Gallery", W = windowWidth, H = windowHeight }) then
-        -- Title
-        Slab.Text("Build Gallery")
-        Slab.Separator()
+    if CustomUI.beginDialog("BuildGallery", "Build Gallery", { W = windowWidth, H = windowHeight }) then
+        local shouldClose = false
+        if CustomUI.dialogCloseButton() then
+            shouldClose = true
+        end
 
-        -- Gallery content area
+        CustomUI.text("Build Gallery")
+        CustomUI.separator()
+
         local contentWidth = windowWidth - 32
         
         if #self.entries == 0 then
-            Slab.Text("No buildable structures.", { Align = "center" })
+            CustomUI.text("No buildable structures.", { Color = CustomUI.style.textDim })
         else
-            Slab.BeginLayout("BuildGalleryLayout", { Columns = 2 })
-            Slab.SetLayoutColumn(1)
+            local leftW = contentWidth * 0.65
+            local rightW = contentWidth * 0.35 - 16
 
-            -- Scrollable list of structures
-            if Slab.BeginListBox("StructureList", { W = contentWidth * 0.6, H = windowHeight - 160 }) then
-                for i, def in ipairs(self.entries) do
-                    local cog = def.build_cog_cost or 0
-                    local itemLabel = def.id .. " (" .. cog .. " cogs)"
+            CustomUI.beginLayout("BuildGalleryLayout", { Columns = 2, widths = { leftW, rightW } })
+            CustomUI.setLayoutColumn(1)
 
-                    if Slab.BeginListBoxItem("Item_" .. i, { Selected = self.selectedIdx == i }) then
-                        Slab.Text(itemLabel)
-                        
-                        if Slab.IsListBoxItemClicked(1) then
-                            self.selectedIdx = i
+            -- Scrollable Grid of structures
+            if CustomUI.beginScrollArea("StructureGridScroll", { W = leftW, H = windowHeight - 160 }) then
+                local cols = 3
+                local cardW = math.floor((leftW - 24 - (cols - 1) * 8) / cols)
+                local cardH = 100
+
+                local numEntries = #self.entries
+                local numRows = math.ceil(numEntries / cols)
+
+                for r = 1, numRows do
+                    CustomUI.beginLayout("GridRow_" .. r, { Columns = cols })
+                    for c = 1, cols do
+                        local idx = (r - 1) * cols + c
+                        CustomUI.setLayoutColumn(c)
+                        if idx <= numEntries then
+                            local def = self.entries[idx]
+                            local img, quad = self:getStructureTileInfo(def)
+                            local label = def.id or ""
+                            local costLabel = (def.build_cog_cost or 0) .. " cogs"
+                            local selected = (self.selectedIdx == idx)
+
+                            if CustomUI.gridItem("Card_" .. idx, img, quad, label, costLabel, selected, cardW, cardH) then
+                                self.selectedIdx = idx
+                            end
                         end
-                        
-                        Slab.EndListBoxItem()
                     end
+                    CustomUI.endLayout()
                 end
-                Slab.EndListBox()
+                CustomUI.endScrollArea()
             end
 
-            Slab.SetLayoutColumn(2)
+            CustomUI.setLayoutColumn(2)
             if self.selectedIdx and self.entries[self.selectedIdx] then
                 local def = self.entries[self.selectedIdx]
-                local pw, ph = contentWidth * 0.35, contentWidth * 0.35
-                self:drawPreview(def, pw, ph)
-                Slab.Image("BuildPreview", { Image = self.previewCanvas, W = pw, H = ph })
-                Slab.Text(def.description or "No description.")
+                local pw = rightW
+                local ph = math.min(rightW, windowHeight - 220)
+                local img, quad = self:getStructureTileInfo(def)
+                if img and quad then
+                    CustomUI.quadImage("BuildPreview", img, quad, pw, ph)
+                else
+                    CustomUI.text("No Preview", { Color = CustomUI.style.textDim })
+                end
+                CustomUI.text(def.id or "", { Color = CustomUI.style.text })
+                CustomUI.text(def.description or "No description.", { Color = CustomUI.style.textDim })
             else
-                Slab.Text("Select a structure.")
+                CustomUI.text("Select a structure.")
             end
 
-            Slab.EndLayout()
+            CustomUI.endLayout()
         end
 
-        Slab.Separator()
+        CustomUI.separator()
 
         -- Buttons
-        if Slab.Button("Build", { W = 100 }) then
+        if CustomUI.button("Build", "Build", { W = 100 }) then
             if self.selectedIdx and self.entries[self.selectedIdx] then
                 local def = self.entries[self.selectedIdx]
                 if self.onSelect then self.onSelect(def.id) end
@@ -173,21 +211,21 @@ function BuildGallery:update(dt)
             end
         end
 
-        Slab.SameLine()
+        CustomUI.sameLine()
 
-        if Slab.Button("Close", { W = 100 }) then
+        if shouldClose or CustomUI.button("Close", "Close", { W = 100 }) then
             self:hide()
             if self.onClose then self.onClose() end
         end
 
-        Slab.EndDialog()
+        CustomUI.endDialog()
     else
         self.open = false
     end
 end
 
 function BuildGallery:draw()
-    -- Slab handles all dialog drawing in the update phase.
+    -- Handled globally by CustomUI.draw()
 end
 
 return BuildGallery

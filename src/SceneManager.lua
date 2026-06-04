@@ -127,11 +127,11 @@ function SceneManager:load()
     local ok, img = pcall(love.graphics.newImage, "assets/objects/player01.png")
     if ok then Gfx.setNearest(img); tex = img end
 
-    -- Compact foot hitbox for tight movement/collision feel.
+    -- Centered hitbox so movement and sprite alignment stay in sync.
     self.player = Player.new(
         { x = self.farmSpawnX, y = self.farmSpawnY },
         tex,
-        { x = -4, y = -6, w = 8, h = 6 }
+        { x = -4, y = -4, w = 8, h = 8 }
     )
 
     local inv = Inventory.new()
@@ -610,10 +610,13 @@ function SceneManager:draw()
     end
 
     self.notebook:draw()
+    self:drawNotebookButton()
+end
+
+function SceneManager:drawPostUI()
     self.dialogue:draw()
     self:drawSoilStageTooltip()
     self.toasts:draw()
-    self:drawNotebookButton()
 
     -- Expedition overlays
     self.expeditionTracker:drawDangerAura()
@@ -671,14 +674,25 @@ end
 
 function SceneManager:drawNotebookButton()
     local sw, sh = love.graphics.getWidth(), love.graphics.getHeight()
-    local w, h = 110, 34
+    local w, h = 116, 34
     local x, y = sw - w - 10, sh - h - 10
     self.notebookBtnRect = { x = x, y = y, w = w, h = h }
-    love.graphics.setColor(0, 0, 0, 0.68)
-    love.graphics.rectangle("fill", x, y, w, h, 6, 6)
-    love.graphics.setColor(0.95, 0.95, 0.95, 1)
-    love.graphics.rectangle("line", x, y, w, h, 6, 6)
-    love.graphics.print("Notebook", x + 18, y + 9)
+    love.graphics.setColor(0.06, 0.06, 0.08, 0.96)
+    love.graphics.rectangle("fill", x, y, w, h, 1, 1)
+    love.graphics.setColor(0.22, 0.18, 0.12, 1)
+    love.graphics.rectangle("fill", x + 1, y + 1, w - 2, 5)
+    love.graphics.setColor(0.95, 0.82, 0.42, 1)
+    love.graphics.rectangle("line", x, y, w, h, 1, 1)
+
+    love.graphics.setColor(0.92, 0.87, 0.75, 1)
+    love.graphics.rectangle("fill", x + 9, y + 8, 11, 18, 1, 1)
+    love.graphics.setColor(0.48, 0.35, 0.18, 1)
+    love.graphics.rectangle("line", x + 9, y + 8, 11, 18, 1, 1)
+    love.graphics.line(x + 15, y + 8, x + 15, y + 26)
+    love.graphics.line(x + 13, y + 12, x + 17, y + 12)
+
+    love.graphics.setColor(0.97, 0.95, 0.86, 1)
+    love.graphics.print("Notebook", x + 24, y + 9)
     love.graphics.setColor(1, 1, 1, 1)
 end
 
@@ -710,7 +724,12 @@ function SceneManager:keypressed(key)
     end
 
     if self.notebook:capturesInput() then
-        if key == "escape" then self.notebook:close() end
+        if key == "escape" then
+            self.notebook:close()
+            return
+        end
+        local CustomUI = require("src.ui.CustomUI")
+        CustomUI.keypressed(key)
         return
     end
 

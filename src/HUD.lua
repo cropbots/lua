@@ -11,7 +11,10 @@ function HUD.new(player)
     local heart, heartEmpty, cogImg
     local ok1, h1 = pcall(love.graphics.newImage, "assets/ui/heart.png")
     local ok2, h2 = pcall(love.graphics.newImage, "assets/ui/heart-empty.png")
-    local ok3, c3 = pcall(love.graphics.newImage, "assets/items/gear.png")
+    local ok3, c3 = pcall(love.graphics.newImage, "assets/items/gear-o.png")
+    if not ok3 then
+        ok3, c3 = pcall(love.graphics.newImage, "assets/items/gear.png")
+    end
     if ok1 then
         h1:setFilter("nearest", "nearest"); heart = h1
     end
@@ -61,12 +64,12 @@ function HUD:draw()
     end
 
     -- Draw Cogs currency in bottom-left
-    local scale = self:uiScale()
     local cogs = self.player:getCogs()
-    local bx = 20 * scale
-    local by = love.graphics.getHeight() - 52 * scale
-    local iconSize = 28 * scale
-    local padding = 6 * scale
+    local scale = self:uiScale()
+    local bx = math.floor(18 * scale)
+    local by = math.floor(love.graphics.getHeight() - 48 * scale)
+    local iconSize = math.floor(22 * scale + 0.5)
+    local padding = math.floor(6 * scale + 0.5)
 
     local text = tostring(cogs)
     local font = love.graphics.getFont()
@@ -76,10 +79,10 @@ function HUD:draw()
     local pillH = iconSize + padding * 2
 
     love.graphics.setColor(0, 0, 0, 0.6)
-    love.graphics.rectangle("fill", bx, by - padding, pillW, pillH, 6 * scale, 6 * scale)
+    love.graphics.rectangle("fill", bx, by - padding, pillW, pillH, 2, 2)
     love.graphics.setColor(0.9, 0.6, 0.2, 0.8)
-    love.graphics.setLineWidth(1.5 * scale)
-    love.graphics.rectangle("line", bx, by - padding, pillW, pillH, 6 * scale, 6 * scale)
+    love.graphics.setLineWidth(1)
+    love.graphics.rectangle("line", bx, by - padding, pillW, pillH, 2, 2)
 
     if self.cogImg then
         love.graphics.setColor(1, 1, 1, 1)
@@ -90,7 +93,7 @@ function HUD:draw()
     end
 
     love.graphics.setColor(1, 1, 1, 1)
-    love.graphics.print(text, bx + padding * 2.5 + iconSize, by + (iconSize - textH) * 0.5)
+    love.graphics.print(text, bx + padding * 2 + iconSize, by + math.floor((iconSize - textH) * 0.5))
 end
 
 return HUD

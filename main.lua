@@ -19,6 +19,7 @@ local Gfx = require("src.Gfx")
 local Slab = require("vendor.slab")
 local TitleScreen = require("src.TitleScreen")
 local SceneManager = require("src.SceneManager")
+local CustomUI = require("src.ui.CustomUI")
 
 local appState = "title"
 local titleScreen
@@ -33,6 +34,7 @@ function love.load()
 end
 
 function love.update(dt)
+	CustomUI.clearEvents(dt)
 	Slab.Update(dt)
 
 	if appState == "title" then
@@ -41,10 +43,12 @@ function love.update(dt)
 			appState = "game"
 			scene:load()
 		end
+		CustomUI.flushEvents()
 		return
 	end
 
 	scene:update(dt)
+	CustomUI.flushEvents()
 end
 
 function love.draw()
@@ -53,7 +57,9 @@ function love.draw()
 		return
 	end
 	scene:draw()
+	CustomUI.draw()
 	Slab.Draw()
+	scene:drawPostUI()
 end
 
 function love.keypressed(key)
@@ -74,9 +80,13 @@ function love.keyreleased(key)
 	scene:keyreleased(key)
 end
 
-function love.textinput(text) end
+function love.textinput(text)
+	CustomUI.textinput(text)
+end
 
 function love.mousepressed(x, y, button)
+	CustomUI.mousepressed(x, y, button)
+
 	if appState == "title" then
 		if button == 1 then
 			appState = "game"
@@ -87,16 +97,33 @@ function love.mousepressed(x, y, button)
 	scene:mousepressed(x, y, button)
 end
 
-function love.mousereleased(x, y, button) end
+function love.mousemoved(x, y, dx, dy)
+	local CustomUI = require("src.ui.CustomUI")
+	CustomUI.mousemoved(x, y, dx, dy)
+end
 
-function love.mousemoved(x, y, dx, dy) end
+function love.mousereleased(x, y, button)
+	local CustomUI = require("src.ui.CustomUI")
+	CustomUI.mousereleased(x, y, button)
+end
 
 function love.wheelmoved(x, y)
+	CustomUI.wheelmoved(x, y)
+
 	if appState ~= "game" or not scene or not scene.player then
 		return
 	end
+	if scene.notebook and scene.notebook:capturesInput() then
+		return
+	end
 	local inv = scene.player:getInventory()
-	if inv and (inv:isWheelOpen() or not scene.lootUI:isOpen()) then
+	if inv and inv:isWheelOpen() then
+		local mx, my = love.mouse.getPosition()
+		if inv:handleWheel(mx, my, y) then
+			return
+		end
+	end
+	if inv and not scene.lootUI:isOpen() then
 		if y > 0 then
 			inv:cycleSelection(-1)
 		elseif y < 0 then

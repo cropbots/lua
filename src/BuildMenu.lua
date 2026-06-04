@@ -89,6 +89,7 @@ function BuildMenu:drawGhost(map, tileset, mouseWx, mouseWy, valid)
     end
     drawEntries(def.background)
     drawEntries(def.foreground)
+    drawEntries(def.overlay)
     love.graphics.setColor(1, 1, 1, 1)
 end
 

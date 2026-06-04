@@ -1,6 +1,6 @@
 --- Cropbot farm automation: wander farm tiles, harvest, replant from bot inventory.
 
-local TileMap = require("src.TileMap")
+local Pathfinder = require("src.Pathfinder")
 local Crops = require("src.farm.Crops")
 
 local CropbotAI = {}
@@ -85,6 +85,59 @@ local function pickSeed(inv)
     return nil
 end
 
+local function followPath(inst, map, tx, ty, speed, state, dt)
+    state.pathFollow = state.pathFollow or {
+        replanTimer = 0,
+        path = nil,
+        idx = 1,
+        goalTx = nil,
+        goalTy = nil,
+    }
+
+    local pf = state.pathFollow
+    pf.replanTimer = (pf.replanTimer or 0) - dt
+    if pf.goalTx ~= tx or pf.goalTy ~= ty or pf.replanTimer <= 0 then
+        local stx, sty = map:worldToTile(inst.pos.x, inst.pos.y)
+        pf.path = Pathfinder.findPath(map, stx, sty, tx, ty)
+        pf.idx = pf.path and 2 or 1
+        pf.goalTx = tx
+        pf.goalTy = ty
+        pf.replanTimer = 0.65
+    end
+
+    if pf.path and pf.idx then
+        local nextIdx = Pathfinder.nextWaypoint(pf.path, pf.idx, inst.pos.x, inst.pos.y, map.tileSize)
+        if nextIdx then
+            pf.idx = nextIdx
+            local wp = pf.path[nextIdx]
+            local wx, wy = map:tileToWorld(wp[1], wp[2])
+            wx = wx + map.tileSize * 0.5
+            wy = wy + map.tileSize * 0.5
+            local dx, dy = wx - inst.pos.x, wy - inst.pos.y
+            local len = math.sqrt(dx * dx + dy * dy)
+            if len > 0.001 then
+                inst.vel.x = dx / len * speed
+                inst.vel.y = dy / len * speed
+            else
+                inst.vel.x, inst.vel.y = 0, 0
+            end
+            return true, false
+        end
+    end
+
+    local goalX, goalY = map:tileToWorld(tx, ty)
+    goalX = goalX + map.tileSize * 0.5
+    goalY = goalY + map.tileSize * 0.5
+    local dx, dy = goalX - inst.pos.x, goalY - inst.pos.y
+    local dist = math.sqrt(dx * dx + dy * dy)
+    if dist <= map.tileSize * 0.45 then
+        inst.vel.x, inst.vel.y = 0, 0
+        return false, true
+    end
+
+    return false, false
+end
+
 function CropbotAI.runFarm(inst, dt, ctx)
     CropbotAI.runAction("smart_seek_farm_tile", inst, dt, ctx)
     if inst.vel.x == 0 and inst.vel.y == 0 then
@@ -157,7 +210,13 @@ function CropbotAI.runAction(name, inst, dt, ctx)
         return
     end
 
-    if moveTowardTile(inst, map, target.tx, target.ty, speed) then
+    local moving, reached = followPath(inst, map, target.tx, target.ty, speed, state, dt)
+    if not moving and not reached then
+        moving = moveTowardTile(inst, map, target.tx, target.ty, speed)
+        reached = moving
+    end
+
+    if reached then
         if target.kind == "harvest" and inv then
             if farmSystem:harvest(map, target.tx, target.ty, inv) then
                 local seed = pickSeed(inv)

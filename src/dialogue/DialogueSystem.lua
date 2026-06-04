@@ -1,4 +1,3 @@
-local Slab = require("vendor.slab")
 local utf8 = require("utf8")
 
 local DialogueSystem = {}
@@ -86,28 +85,41 @@ function DialogueSystem:draw()
     local sw, sh = love.graphics.getDimensions()
     local width = math.min(620, sw - 24)
     local height = 118
-    local x = 12
+    local x = (sw - width) / 2
     local y = sh - height - 12
-    if Slab.BeginWindow("DialogueOverlay", {
-            X = x,
-            Y = y,
-            W = width,
-            H = height,
-            IsMenuBar = false,
-            AllowFocus = false,
-            NoSavedSettings = true,
-            BgColor = { 0.04, 0.04, 0.06, 0.92 },
-            Title = "",
-        }) then
-        Slab.Text(self.active.speaker, { Color = { 1.0, 0.87, 0.56, 1.0 } })
-        Slab.Separator()
-        Slab.Text(self.printed, { W = width - 24 })
-        local done = (self.printed == self.active.text)
-        Slab.Text(done and "[Space] Continue" or "[Space] Skip", {
-            Color = { 0.9, 0.9, 0.9, 0.8 }
-        })
-        Slab.EndWindow()
-    end
+
+    love.graphics.push("all")
+    -- Drop shadow
+    love.graphics.setColor(0, 0, 0, 0.4)
+    love.graphics.rectangle("fill", x + 3, y + 3, width, height, 6, 6)
+
+    -- Main box
+    love.graphics.setColor(0.04, 0.04, 0.06, 0.92)
+    love.graphics.rectangle("fill", x, y, width, height, 6, 6)
+
+    -- Border outline
+    love.graphics.setColor(0.18, 0.18, 0.22, 1)
+    love.graphics.setLineWidth(1)
+    love.graphics.rectangle("line", x, y, width, height, 6, 6)
+
+    -- Speaker
+    love.graphics.setColor(1.0, 0.87, 0.56, 1.0)
+    love.graphics.print(self.active.speaker, x + 12, y + 8)
+
+    -- Separator
+    love.graphics.setColor(0.15, 0.15, 0.18, 1)
+    love.graphics.line(x + 12, y + 26, x + width - 12, y + 26)
+
+    -- Text
+    love.graphics.setColor(0.9, 0.9, 0.92, 1)
+    love.graphics.printf(self.printed, x + 12, y + 34, width - 24, "left")
+
+    -- Skip/Continue
+    local done = (self.printed == self.active.text)
+    love.graphics.setColor(0.9, 0.9, 0.9, 0.8)
+    love.graphics.printf(done and "[Space] Continue" or "[Space] Skip", x + 12, y + height - 20, width - 24, "right")
+
+    love.graphics.pop()
 end
 
 function DialogueSystem:isActive()

@@ -9,7 +9,7 @@ local RING_THICKNESS = 72
 local SLOT_SIZE = 40
 local SPIN_SPEED = 0.28
 
-local CROP_ITEMS = { "wheat", "tomato", "potato" }
+local CROP_ITEMS = { "wheat_seed", "tomato_seed", "potato" }
 
 local function rollBasicCrate(inv)
     local crop = CROP_ITEMS[love.math.random(#CROP_ITEMS)]

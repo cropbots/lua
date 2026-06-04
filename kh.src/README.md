@@ -15,7 +15,8 @@ Lua-lite language for Cropbots programming puzzles. Integrated from `lua/` via `
 |------|------|
 | `print` | Notebook console |
 | `input` | Prompt (notebook) |
-| `move`, `turn_left`, `turn_right`, `collect`, `attack` | Robot (game hooks later) |
+| `move`, `left_turn`, `right_turn`, `half_turn`, `collect`, `unlock`, `attack`, `flag` | Robot (game hooks) |
+| `turn_left`, `turn_right` | Legacy aliases for the left/right turns |
 
 ## API
 

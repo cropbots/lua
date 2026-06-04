@@ -49,6 +49,7 @@ function FarmScene.generate(map, structureSystem, farmBlockSystem, groundTile)
     structureSystem:clearInteractors()
     structureSystem:scatter(map, "tree_plains", FarmScene.DECOR_SEED, inMargin)
     structureSystem:scatter(map, "bush_plains", FarmScene.DECOR_SEED + 1, inMargin)
+    structureSystem:scatter(map, "stump_plains", FarmScene.DECOR_SEED + 2, inMargin)
 
     local innerSeed = FarmScene.DECOR_SEED + 100
     structureSystem:scatter(map, "tree_plains", innerSeed, inCore)

@@ -159,7 +159,7 @@ function Pathfinder.findPath(map, startTx, startTy, goalTx, goalTy)
             local ny = cy + dir[2]
 
             -- Skip solid tiles
-            if not map:isSolid(nx, ny) then
+            if nx >= 0 and ny >= 0 and (not map.width or nx < map.width) and (not map.height or ny < map.height) and not map:isSolid(nx, ny) then
                 local nk     = key(nx, ny)
                 local newG   = currentG + 1
                 local oldG   = gCost[nk]

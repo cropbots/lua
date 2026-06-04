@@ -1,6 +1,6 @@
---- Programming notebook (SLAB): Programming + Discovery tabs.
+--- Programming notebook (CustomUI): Programming + Discovery tabs.
 
-local Slab = require("vendor.slab")
+local CustomUI = require("src.ui.CustomUI")
 local Khoron = require("init")
 local RobotPuzzle = require("src.puzzle.RobotPuzzle")
 local LuaHighlighter = require("src.ui.LuaHighlighter")
@@ -19,6 +19,8 @@ local ALMANAC = {
     { id = "unlock",     desc = "Unlock the lock node in front (matching key color)." },
     { id = "attack",     desc = "Delete the enemy node in front." },
     { id = "flag",       desc = "Win if there is a flag node in front." },
+    { id = "turn_left",  desc = "Legacy alias for left_turn()." },
+    { id = "turn_right", desc = "Legacy alias for right_turn()." },
 }
 
 function Notebook.new()
@@ -28,7 +30,20 @@ function Notebook.new()
         source = 'print("Hello from Khoron")\n',
         consoleLog = "",
         stepper = nil,
-        discovered = { print = true, input = true },
+        discovered = {
+            print = true,
+            input = true,
+            move = true,
+            left_turn = true,
+            right_turn = true,
+            half_turn = true,
+            collect = true,
+            unlock = true,
+            attack = true,
+            flag = true,
+            turn_left = true,
+            turn_right = true,
+        },
         puzzleDef = nil,
         robotHooks = {},
         speedIdx = 4,
@@ -89,28 +104,15 @@ function Notebook:setRobotPuzzle(def)
 end
 
 function Notebook:builtins()
-    local notebook = self
-    local base = Khoron.defaultBuiltins(notebook)
-    local wrapped = {}
-    wrapped.print = base.print
-    wrapped.input = base.input
-    for name, fn in pairs(base) do
-        if name ~= "print" and name ~= "input" and notebook.discovered[name] then
-            wrapped[name] = function(rt, ...)
-                return fn(rt, ...)
-            end
-        elseif name == "turn_left" and notebook.discovered.left_turn then
-            wrapped[name] = function(rt, ...) return base.left_turn(rt, ...) end
-        elseif name == "turn_right" and notebook.discovered.right_turn then
-            wrapped[name] = function(rt, ...) return base.right_turn(rt, ...) end
-        end
-    end
-    return wrapped
+    return Khoron.defaultBuiltins(self)
 end
 
 function Notebook:setSource(text)
     self.source = tostring(text or "")
     self.editorInputId = self.editorInputId + 1
+    if self.opened and self.tab == "programming" then
+        CustomUI.focusedWidgetId = "Editor" .. tostring(self.editorInputId)
+    end
 end
 
 function Notebook:discoverFromPuzzle(puzzle)
@@ -120,6 +122,8 @@ function Notebook:discoverFromPuzzle(puzzle)
     self:discover("left_turn")
     self:discover("right_turn")
     self:discover("half_turn")
+    self:discover("turn_left")
+    self:discover("turn_right")
 
     local obj = robot.objective and robot.objective.kind
     if obj == "flag" or not obj then self:discover("flag") end
@@ -165,17 +169,28 @@ end
 
 function Notebook:showTab(name)
     self.tab = name
+    if self.opened and self.tab == "programming" then
+        CustomUI.focusedWidgetId = "Editor" .. tostring(self.editorInputId)
+    elseif self.opened then
+        CustomUI.focusedWidgetId = nil
+    end
 end
 
 function Notebook:open()
     self.opened = true
-    Slab.OpenDialog("Notebook")
+    pcall(love.keyboard.setTextInput, true)
+    pcall(love.keyboard.setKeyRepeat, true)
+    if self.tab == "programming" then
+        CustomUI.focusedWidgetId = "Editor" .. tostring(self.editorInputId)
+    end
 end
 
 function Notebook:close()
     self.opened = false
     self.stepper = nil
-    Slab.CloseDialog()
+    pcall(love.keyboard.setTextInput, false)
+    pcall(love.keyboard.setKeyRepeat, false)
+    CustomUI.focusedWidgetId = nil
 end
 
 function Notebook:toggle()
@@ -389,60 +404,69 @@ function Notebook:update(dt)
     local h = math.min(620, love.graphics.getHeight() - 18)
     local leftW = math.floor((w - 42) * 0.62)
     local rightW = (w - 42) - leftW
+    local bodyH = h - 64
+    local topTabW = math.max(88, math.min(140, math.floor((w - 32 - 24 - 84) / 3)))
+    local actionW = math.max(56, math.min(76, math.floor((rightW - 16) / 4)))
 
-    if not Slab.BeginDialog("Notebook", { Title = "Notebook", W = w, H = h }) then
+    if not CustomUI.beginDialog("Notebook", "Notebook", { W = w, H = h }) then
         self.opened = false
         return
     end
 
     local shouldClose = false
-    local layoutStarted = false
     local ok, err = pcall(function()
-        -- Toolbar
-        if Slab.Button("Programming", { W = 110 }) then
-            self:showTab("programming")
-        end
-
-        Slab.SameLine()
-
-        if Slab.Button("Discovery", { W = 110 }) then
-            self:showTab("discovery")
-        end
-
-        Slab.SameLine()
-
-        if Slab.Button("Close", { W = 80 }) then
+        if CustomUI.dialogCloseButton() then
             shouldClose = true
         end
 
-        Slab.Separator()
+        -- Top bar: tabs + close on one row.
+        if CustomUI.beginLayout("NotebookTopBar", { Columns = 2, widths = { w - 132, 100 } }) then
+            CustomUI.setLayoutColumn(1)
+            if CustomUI.button("btn_programming", "Programming", { W = topTabW }) then
+                self:showTab("programming")
+            end
+            CustomUI.sameLine()
+            if CustomUI.button("btn_discovery", "Discovery", { W = topTabW }) then
+                self:showTab("discovery")
+            end
+            CustomUI.setLayoutColumn(2)
+            if CustomUI.button("btn_close", "Close", { W = 92 }) then
+                shouldClose = true
+            end
+            CustomUI.endLayout()
+        end
+
+        CustomUI.separator()
 
         if self.tab == "discovery" then
-            Slab.Text("Discovered functions", { W = w - 32 })
-            Slab.Separator()
-            local almanacText = self:fillAlmanac()
-            Slab.Text(almanacText, { W = w - 32, H = h - 110 })
+            CustomUI.text("Discovered functions", { W = w - 32 })
+            CustomUI.separator()
+            if CustomUI.beginScrollArea("DiscoveryScrollArea", { W = w - 32, H = bodyH - 44 }) then
+                for _, e in ipairs(ALMANAC) do
+                    if self.discovered[e.id] then
+                        CustomUI.text(e.id .. "()", { Color = CustomUI.style.accent })
+                        CustomUI.sameLine()
+                        CustomUI.text("— " .. e.desc, { Color = CustomUI.style.text })
+                    else
+                        CustomUI.text("???()", { Color = CustomUI.style.textDim })
+                        CustomUI.sameLine()
+                        CustomUI.text("— Solve lock puzzles to discover this function.", { Color = CustomUI.style.textDim })
+                    end
+                end
+                CustomUI.endScrollArea()
+            end
         else
             -- IDE split: editor left, robot visualization + console right
-            if Slab.BeginLayout("NotebookIDE", { Columns = 2, AnchorX = true, AnchorY = true }) then
-                layoutStarted = true
-                Slab.SetLayoutColumn(1)
-                if Slab.Input("Editor" .. tostring(self.editorInputId), {
-                    Text = self.source,
-                    MultiLine = true,
-                    W = leftW,
-                    H = h - 96,
-                }) then
-                    self.source = Slab.GetInputText()
-                end
+            if CustomUI.beginLayout("NotebookIDE", { Columns = 2, widths = { leftW, rightW } }) then
+                CustomUI.setLayoutColumn(1)
+                self.source = CustomUI.editor("Editor" .. tostring(self.editorInputId), self.source, leftW, bodyH - 32, self.runningLine)
                 if self.runningLine then
-                    Slab.Text("Running line: " .. tostring(self.runningLine), { W = leftW })
+                    CustomUI.text("Running line: " .. tostring(self.runningLine), { W = leftW })
                 end
 
-                Slab.SetLayoutColumn(2)
+                CustomUI.setLayoutColumn(2)
                 -- Run controls above robot visualization
-                if Slab.Button("Play", { W = 64 }) then
-                    self.source = Slab.GetInputText() or self.source
+                if CustomUI.button("btn_play", "Play", { W = actionW }) then
                     if not self.stepper then
                         self.consoleLog = ""
                         local ok, s_err = pcall(function()
@@ -460,52 +484,50 @@ function Notebook:update(dt)
                     end
                 end
 
-                Slab.SameLine()
-                if Slab.Button("Pause", { W = 64 }) then
+                CustomUI.sameLine()
+                if CustomUI.button("btn_pause", "Pause", { W = actionW }) then
                     if self.stepper then
                         self.stepper.running = false
                     end
                 end
 
-                Slab.SameLine()
-                if Slab.Button("Stop", { W = 64 }) then
+                CustomUI.sameLine()
+                if CustomUI.button("btn_stop", "Stop", { W = actionW }) then
                     self.stepper = nil
                 end
 
-                Slab.SameLine()
-                if Slab.Button("Speed: " .. self.speedLabels[self.speedIdx], { W = 150 }) then
+                CustomUI.sameLine()
+                if CustomUI.button("btn_speed", "Speed: " .. self.speedLabels[self.speedIdx], { W = math.max(120, rightW - actionW * 3 - 24) }) then
                     self.speedIdx = self.speedIdx % 6 + 1
                     if self.stepper then
                         self.stepper:setSpeed(self.speedNames[self.speedIdx] or "regular")
                     end
                 end
 
-                Slab.Separator()
+                CustomUI.separator()
 
                 local vizW = rightW
-                local vizH = math.floor((h - 160) * 0.58)
+                local vizH = math.floor((bodyH - 150) * 0.56)
                 if self.robotPuzzle then
                     self:drawRobotGridCanvas(self.robotPuzzle:getVizState(), vizW, vizH)
-                    Slab.Image("RobotCanvas", { Image = self.robotCanvas, W = vizW, H = vizH })
+                    CustomUI.image("RobotCanvas", self.robotCanvas, vizW, vizH)
                 else
                     local st = self.robotViz and self.robotViz() or {}
-                    Slab.Text("Robot Visualization", { W = rightW })
-                    Slab.Text(("(%s, %s) dir=%s"):format(tostring(st.tx or 0), tostring(st.ty or 0), tostring(st.dir or "up")),
+                    CustomUI.text("Robot Visualization", { W = rightW })
+                    CustomUI.text(("(%s, %s) dir=%s"):format(tostring(st.tx or 0), tostring(st.ty or 0), tostring(st.dir or "up")),
                         { W = rightW, H = vizH })
                 end
 
-                Slab.Separator()
-                Slab.Text("Console", { W = rightW })
-                Slab.Text(self.consoleLog, { W = rightW, H = h - 140 - vizH })
+                CustomUI.separator()
+                CustomUI.text("Console", { W = rightW })
+                CustomUI.text(self.consoleLog, { W = rightW, H = bodyH - 140 - vizH })
 
-                Slab.EndLayout()
-                layoutStarted = false
+                CustomUI.endLayout()
             end
         end
     end)
 
-    if layoutStarted then Slab.EndLayout() end
-    Slab.EndDialog()
+    CustomUI.endDialog()
 
     if not ok then
         self:log("[notebook error] " .. tostring(err))
@@ -516,7 +538,7 @@ function Notebook:update(dt)
 end
 
 function Notebook:draw()
-    -- Slab handles all dialog drawing in the update phase; nothing to do here.
+    -- CustomUI handles all dialog drawing; nothing to do here.
 end
 
 function Notebook:capturesInput()

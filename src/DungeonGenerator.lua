@@ -203,17 +203,6 @@ function DungeonGenerator.generate(map, structureSystem, seed)
     end
 
     for _, room in ipairs(rooms) do
-        if rng:usize(100) < 22 then
-            local tx = room.x + rng:usize(math.max(1, room.w))
-            local ty = room.y + rng:usize(math.max(1, room.h))
-            structureSystem:place(map, "stump_plains", tx, ty)
-        end
-        if rng:usize(100) < 28 then
-            local tx = room.x + rng:usize(math.max(1, room.w))
-            local ty = room.y + rng:usize(math.max(1, room.h))
-            local rock = (rng:usize(2) == 0) and "rock_small_88" or "rock_small_89"
-            structureSystem:place(map, rock, tx, ty)
-        end
     end
 
     -- Loot/spawner/warp in ~40% of rooms (min 6)
